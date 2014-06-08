@@ -17,7 +17,7 @@
 // Gen 3 Plus = 21
 // gen 3  Monolithic Electronics = 22
 // Gen3 PLUS for TechZone Gen3 Remix Motherboard = 23
-#define MOTHERBOARD 33
+#define MOTHERBOARD 5
 
 //// Thermistor settings:
 // 1 is 100k thermistor
@@ -28,11 +28,12 @@
 // 6 is EPCOS 100k
 // 7 is 100k Honeywell thermistor 135-104LAG-J01
 #define THERMISTORHEATER 1
-#define THERMISTORBED 1
+//#define THERMISTORBED 1
 
 //// Calibration variables
 // X, Y, Z, E steps per unit - Metric Prusa Mendel with Wade extruder:
-#define _AXIS_STEP_PER_UNIT {80, 80, 3200/1.25,700}
+//#define _AXIS_STEP_PER_UNIT {80, 80, 3200/1.25,700}
+#define _AXIS_STEP_PER_UNIT {40, 40, 4200/1.25,400}
 // Metric Prusa Mendel with Makergear geared stepper extruder:
 //#define _AXIS_STEP_PER_UNIT {80,80,3200/1.25,1380}
 // MakerGear Hybrid Prusa Mendel:
@@ -54,7 +55,7 @@ const bool Z_ENDSTOP_INVERT = false;
 //#define BAUDRATE 250000
 
 // Comment out (using // at the start of the line) to disable SD support:
-#define SDSUPPORT
+//#define SDSUPPORT
 
 // Uncomment to make run init.g from SD on boot
 //#define SDINITFILE
@@ -117,9 +118,9 @@ const bool DISABLE_E = false;
 //-----------------------------------------------------------------------
 // Inverting axis direction
 //-----------------------------------------------------------------------
-const bool INVERT_X_DIR = false;
-const bool INVERT_Y_DIR = false;
-const bool INVERT_Z_DIR = true;
+const bool INVERT_X_DIR = true;
+const bool INVERT_Y_DIR = true;
+const bool INVERT_Z_DIR = false;
 const bool INVERT_E_DIR = false;
 
 //-----------------------------------------------------------------------
@@ -139,7 +140,7 @@ const bool max_software_endstops = true; //If true, axis won't move to coordinat
 //-----------------------------------------------------------------------
 //Max Length for Prusa Mendel, check the ways of your axis and set this Values
 //-----------------------------------------------------------------------
-const int X_MAX_LENGTH = 200;
+const int X_MAX_LENGTH = 180;
 const int Y_MAX_LENGTH = 200;
 const int Z_MAX_LENGTH = 100;
 
@@ -147,7 +148,7 @@ const int Z_MAX_LENGTH = 100;
 //// MOVEMENT SETTINGS
 //-----------------------------------------------------------------------
 const int NUM_AXIS = 4; // The axis order in all axis related arrays is X, Y, Z, E
-#define _MAX_FEEDRATE {400, 400, 2, 45}       // (mm/sec)    
+#define _MAX_FEEDRATE {400, 400, 2, 25}       // (mm/sec)    
 #define _HOMING_FEEDRATE {1500,1500,120}      // (mm/min) !!
 #define _AXIS_RELATIVE_MODES {false, false, false, false}
 
@@ -183,12 +184,12 @@ const long min_time_before_dir_change = 30; //milliseconds
 //-----------------------------------------------------------------------
 // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 #define _ACCELERATION 1000         // Axis Normal acceleration mm/s^2
-#define _RETRACT_ACCELERATION 2000 // Extruder Normal acceleration mm/s^2
+#define _RETRACT_ACCELERATION 1000 // Extruder Normal acceleration mm/s^2
 #define _MAX_XY_JERK 20.0
 #define _MAX_Z_JERK 0.4
 #define _MAX_E_JERK 5.0    // (mm/sec)
 //#define _MAX_START_SPEED_UNITS_PER_SECOND {25.0,25.0,0.2,10.0}
-#define _MAX_ACCELERATION_UNITS_PER_SQ_SECOND {5000,5000,50,5000}    // X, Y, Z and E max acceleration in mm/s^2 for printing moves or retracts
+#define _MAX_ACCELERATION_UNITS_PER_SQ_SECOND {5000,5000,50,2000}    // X, Y, Z and E max acceleration in mm/s^2 for printing moves or retracts
 
 
 // Minimum planner junction speed. Sets the default minimum speed the planner plans for at the end
@@ -356,18 +357,18 @@ const int dropsegments=5; //everything with less than this number of steps will 
 //#define HEATER_USES_MAX6675
 
 // Select one of these only to define how the bed temp is read.
-#define BED_USES_THERMISTOR
+//#define BED_USES_THERMISTOR
 //#define BED_USES_AD595
 
 //This is for controlling a fan to cool down the stepper drivers
 //it will turn on when any driver is enabled
 //and turn off after the set amount of seconds from last driver being disabled again
 //#define CONTROLLERFAN_PIN 23 //Pin used for the fan to cool controller, comment out to disable this function
-#define CONTROLLERFAN_SEC 60 //How many seconds, after all motors were disabled, the fan should run
+//#define CONTROLLERFAN_SEC 60 //How many seconds, after all motors were disabled, the fan should run
 
 //This is for controlling a fan that will keep the extruder cool.
 //#define EXTRUDERFAN_PIN 66 //Pin used to control the fan, comment out to disable this function
-#define EXTRUDERFAN_DEC 50 //Hotend temperature from where the fan will be turned on
+//#define EXTRUDERFAN_DEC 50 //Hotend temperature from where the fan will be turned on
 
 //#define CHAIN_OF_COMMAND 1 //Finish buffered moves before executing M42, fan speed, heater target, and so...
 
